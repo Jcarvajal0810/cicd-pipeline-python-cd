@@ -1,6 +1,6 @@
 # cicd-pipeline-python
 
-Task CI/CD
+CI/CD - EAFIT 
 
 ## Integrantes
 
@@ -10,8 +10,8 @@ Task CI/CD
 
 ## Evidencias
 
--
--
+- https://github.com/mate2000/cicd-pipeline-python/pull/1
+- https://github.com/mate2000/cicd-pipeline-python/actions/runs/43615272317
 
 ## Respuestas a las preguntas
 
@@ -89,12 +89,33 @@ Para un SDLC moderno se necesita un flujo rápido y continuo de trabajo, por eso
 
 ### 4.
 
-- El seteo de SonarCloud algunas veces puede ser confuso. -> Mateo Montoya
-- 
+### Mateo Montoya Aristizabal
+
+**Dificultad:** La configuración de SonarCloud fue confusa. El análisis fallaba con el error `Not authorized or organization not found`, aunque el token estaba bien configurado como secreto en GitHub.
+
+**Solución:** Activamos el log de debug del scanner y vimos que SonarCloud respondía 404 al buscar la organización. En `sonar-project.properties` habíamos puesto el nombre visible de la organización (`mate2000`) en lugar de su key (`mate2000-1`). Al corregir `sonar.organization` con la key, el análisis corrió bien.
+
+
+### Santiago Mesa Valencia
+
+**Dificultad:** Mi principal problema fue configurar SonarCloud, sobre todo crear la cuenta y vincularla con mi cuenta de GitHub para que pudiera analizar el repositorio.
+
+**Solución:** Con ayuda del profesor configuré el nuevo proyecto en SonarCloud y lo vinculé con el repositorio de GitHub, para que el análisis se ejecutara desde el pipeline.
+
+**Aprendizaje:** SonarCloud detecta problemas de calidad en el código, como errores, vulnerabilidades, código duplicado o poca cobertura de pruebas, antes de llegar al despliegue. Así se evita que esos errores lleguen a producción, y por eso es una parte importante de un pipeline de CI/CD.
+
+### Jose Manuel Carvajal Aristizabal
+
+**Dificultad:** El entendimiento o la profundización de conceptos, debido a que hay muchas cosas de estas que se habían visto pero no tan a profundidad entonces interiorizar esos conceptos y aplicarlos fue una parte complicada, entonces tuve que leer muy bien cada paso y buscar información por fuera para comprender mejor todo, y ya personalmente no me gusto sonarcloud, me parece que podrían de haber herramientas mas interesantes.
+
+**Solución:**
+
+**Aprendizaje:**
 
 ### 5.
 
-Se prueba lo que realmente se despliega.
+- Se prueba lo que realmente se despliega.
+- Paridad entre entornos.
 
 ### 6.
 
