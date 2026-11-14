@@ -64,3 +64,8 @@ def test_post_sin_token_csrf_es_rechazado():
         assert response.status_code == 400
     finally:
         app.config['WTF_CSRF_ENABLED'] = False
+
+def test_health(client):
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.get_json() == {"status": "ok", "version": "local"}
